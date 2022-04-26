@@ -3,8 +3,21 @@ import { Text, View, Button, ActivityIndicator, TextInput, ScrollView } from 're
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 class AddMemo extends React.Component {
+  //super(props)
+  render(){
+    return (
+      <View>
+        <TextInput placeholder="New Memo" />
+        <Button title="Add" onPress={() => alert('Nothing happens')} />
+      </View>
+    );
+
+  }
 }
+
+
 
 class MemoList extends React.Component {
   constructor(props){
@@ -28,15 +41,15 @@ class MemoList extends React.Component {
  componentDidMount() {
 //async lataus tähän
 /*
-  AsyncStorage.getItem( tähän jotain)
+  AsyncStorage.getItem('memos')
   .then(value =>{
       this.setState({
-        memos: tähän sitten mitä löytyi storagesta,
+        memos: value,
         loading: false})
   })
   .catch(error => {this.setState({loading: false, error: true})
-*/
 
+  */
 this.setState({loading: false})
 
  }
@@ -72,8 +85,8 @@ this.setState({loading: false})
             content={memo.content}
             navigation={this.props.navigation}
           />)}
-        <TextInput placeholder="" />
-        <Button title="Add" onPress={() => alert('Nothing happens')} />
+        
+        <Button title="Add" onPress={() => this.props.navigation.navigate('AddMemo')}/>
       </ScrollView>
     );
   }
@@ -95,7 +108,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Memo">
         <Stack.Screen name="Memo" component={MemoList} />
-        <Stack.Screen name="Add" component={AddMemo} />
+        <Stack.Screen name="AddMemo" component={AddMemo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
