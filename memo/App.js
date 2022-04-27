@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Text, View, Button, ActivityIndicator, TextInput, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet } from "react-native";
+import styles from './Styles';
 
 
 class AddMemo extends React.Component {
   //super(props)
   render(){
     return (
-      <View>
+      <View style={styles.box} >
         <TextInput placeholder="New Memo" />
-        <Button title="Add" onPress={() => alert('Nothing happens')} />  
+        <Button title="Add" onPress={() => alert('Nothing happens')} /> 
       </View>
     );
 
@@ -105,28 +105,7 @@ const Memo = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'lightgrey',
-    alignItems: 'flex-start'
-  },
-  button:{
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'lightblue',
-    alignItems: 'center',
-    flexDirection: 'column-reverse',
-    justifyContent: 'flex-end',
-    marginBottom: 6,
-    minWidth: "48%"
-  },
-  button2:{
-    flex: 1,
-    padding: 20,
-  }
-});
+
 
 const Stack = createStackNavigator();
 
