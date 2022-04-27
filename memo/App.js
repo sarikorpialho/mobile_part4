@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View, Button, ActivityIndicator, TextInput, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet } from "react-native";
 
 
 class AddMemo extends React.Component {
@@ -10,7 +11,7 @@ class AddMemo extends React.Component {
     return (
       <View>
         <TextInput placeholder="New Memo" />
-        <Button title="Add" onPress={() => alert('Nothing happens')} />
+        <Button title="Add" onPress={() => alert('Nothing happens')} />  
       </View>
     );
 
@@ -79,14 +80,17 @@ this.setState({loading: false})
 
     return (
       <ScrollView>
-        {this.state.memos.map(memo =>
-          <Memo
-            key={memo.id}
-            content={memo.content}
-            navigation={this.props.navigation}
-          />)}
-        
-        <Button title="Add" onPress={() => this.props.navigation.navigate('AddMemo')}/>
+        <View style={styles.container}>
+          {this.state.memos.map(memo =>
+            <Memo
+              key={memo.id}
+              content={memo.content}
+              navigation={this.props.navigation}
+            />)}
+        </View>  
+        <View style={styles.button}>
+          <Button title="Add Memo" onPress={() => this.props.navigation.navigate('AddMemo')}/>
+        </View>
       </ScrollView>
     );
   }
@@ -100,6 +104,29 @@ const Memo = (props) => {
     />
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: 'lightgrey',
+    alignItems: 'flex-start'
+  },
+  button:{
+    flex: 1,
+    padding: 20,
+    backgroundColor: 'lightblue',
+    alignItems: 'center',
+    flexDirection: 'column-reverse',
+    justifyContent: 'flex-end',
+    marginBottom: 6,
+    minWidth: "48%"
+  },
+  button2:{
+    flex: 1,
+    padding: 20,
+  }
+});
 
 const Stack = createStackNavigator();
 
