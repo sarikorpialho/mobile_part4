@@ -1,17 +1,21 @@
 import * as React from 'react';
-import { Text, View, Button, ActivityIndicator, TextInput, ScrollView } from 'react-native';
+import { Text, View, Button, ActivityIndicator, TextInput, ScrollView, AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import styles from './Styles';
+
+
 
 
 class AddMemo extends React.Component {
   //super(props)
   render(){
     return (
-      <View style={styles.box} >
-        <TextInput placeholder="New Memo" />
+      <View  >
+        <TextInput placeholder="New Memo" style={styles.text}/>
+        <View style={styles.box}>
         <Button title="Add" onPress={() => alert('Nothing happens')} /> 
+        </View>
       </View>
     );
 
@@ -41,21 +45,22 @@ class MemoList extends React.Component {
 
  componentDidMount() {
 //async lataus tähän
-/*
-  AsyncStorage.getItem('memos')
+ /* AsyncStorage.getItem('@content')
   .then(value =>{
       this.setState({
         memos: value,
         loading: false})
   })
   .catch(error => {this.setState({loading: false, error: true})
-
-  */
+*/
+  
 this.setState({loading: false})
 
  }
 
  componentDidUpdate() {
+  /* AsyncStorage.setItem('id', this.state.id +1)
+  */
 //uuden memon tallennus tähän
 //sekä async ja array
 
@@ -77,6 +82,8 @@ this.setState({loading: false})
         </View>
       )
     }
+
+    
 
     return (
       <ScrollView>
@@ -110,6 +117,7 @@ const Memo = (props) => {
 const Stack = createStackNavigator();
 
 const App = () => {
+ 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Memo">

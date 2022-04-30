@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       padding: 20,
       backgroundColor: 'lightgrey',
       alignItems: 'flex-start'
+      
     },
     button:{
       flex: 1,
@@ -19,16 +20,17 @@ const styles = StyleSheet.create({
       marginBottom: 6,
       minWidth: "48%"
     },
-    button2:{
-      flex: 1,
-      padding: 20,
-      backgroundColor: 'lightblue',
-    },
     box:{
         backgroundColor: 'lightpink',
         fontWeight: 'bold',
         fontSize: 30,
         padding: 10,
+
+    },
+    text:{
+        paddingVertical: 24,
+        borderColor: 'black',
+        borderBottomWidth: 1,
     }
   });
 
